@@ -31,7 +31,7 @@ Run as an MCP service:
 {
     "mcpServers": {
         "uncover-mcp": {
-            "command": "uncover-mcp.exe",
+            "command": "./uncover-mcp",
             "args": [],
             "env": {
                 "SHODAN_API_KEY": "",
