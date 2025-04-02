@@ -34,6 +34,7 @@ builds:
       goarch: 'arm64'
 
   binary: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}'
+  dir: ./cmd/uncover-mcp
   main: "."
 
 dockers:
