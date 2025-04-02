@@ -8,21 +8,23 @@ on:
 
 jobs:
 
-  build:
+  goreleaser:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.23.7'
-      
-    - name: "Create release on GitHub"
-      uses: goreleaser/goreleaser-action@v4
-      with: 
-          args: "release -f .goreleaser.yml --clean"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+          
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
           version: latest
-          workdir: .
-      env: 
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

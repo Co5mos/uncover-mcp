@@ -1,7 +1,6 @@
 version: 2
 
 gomod:
-  proxy: true
   env:
     - GO111MODULE=on
 
