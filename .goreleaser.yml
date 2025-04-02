@@ -1,7 +1,8 @@
+version: 2
+
 gomod:
   proxy: true
   env:
-    - GOPROXY=https://goproxy.cn,direct
     - GO111MODULE=on
 
 before:
@@ -41,7 +42,9 @@ dockers:
 
 archives:
 - id: Uncover MCP
-  format: zip
+  format_overrides:
+    - goos: windows
+      format: zip
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{- if eq .Os "darwin" }}macOS_{{ .Arch }} {{- else }}{{ .Os }}_{{ .Arch }}{{ end }}'
 
 checksum:
